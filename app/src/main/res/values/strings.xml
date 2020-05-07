@@ -1,3 +1,21 @@
 <resources>
     <string name="app_name">BaoAccount</string>
+    <!--首页-->
+    <string name="mine">我的</string>
+    <string name="home">首页</string>
+    <string name="account">账单</string>
+    <string name="calculator">记一笔</string>
+
+    <!--登录-->
+    <string name="login">登录</string>
+    <string name="register">注册</string>
+    <string name="userName">用户名:</string>
+    <string name="passWord">密码:</string>
+    <string name="email">邮箱：</string>
+    <string name="account_out">支出</string>
+    <string name="account_in">收入</string>
+    <string name="suggestion">理财小贴士</string>
+    <string name="finish">完成</string>
+    <string name="title_activity_app_main">app_main</string>
+
 </resources>

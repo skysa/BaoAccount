@@ -1,6 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#6200EE</color>
-    <color name="colorPrimaryDark">#3700B3</color>
-    <color name="colorAccent">#03DAC5</color>
+    <color name="colorPrimary">#ffe8ce</color>
+    <color name="colorPrimaryDark">#fcad54</color>
+    <color name="colorAccent">#F1FF9800</color>
+    <!--字体颜色-->
+    <color name="textColorWhite">#FFFFFF</color>
+    <color name="textColorDarkOrange">#fc7304</color>
+    <color name="textColorOrange">#fcad54</color>
+    <color name="textColorPink">#e26d6d</color>
+    <color name="textColorBlack">#000000</color>
+    <color name="textColorSelectPink">#e26d6d</color>
+    <color name="user_nameColor">#f7b487</color>
+    <!--背景颜色-->
+    <color name="backgroundOrangeLight">#ffe8ce</color>
+    <color name="backgroundOrange">#f7b487</color>
 </resources>
