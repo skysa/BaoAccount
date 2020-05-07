@@ -34,4 +34,13 @@ public class userManager {
         }
         return false;
     }
+    public int findId(String name){
+        List<user> users = LitePal.findAll(user.class);
+        for (user us1:users){
+            if (name.trim().equals(us1.getU_name())){
+                return us1.getU_id();
+            }
+        }
+        return 0;
+    }
 }
