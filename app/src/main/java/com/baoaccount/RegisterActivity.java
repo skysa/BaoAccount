@@ -1,6 +1,7 @@
 package com.baoaccount;
 
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
@@ -12,12 +13,10 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.baoaccount.db.user;
-import com.baoaccount.db.userManager;
-
-import org.litepal.LitePal;
-
-import java.util.List;
+import cn.bmob.v3.Bmob;
+import cn.bmob.v3.BmobUser;
+import cn.bmob.v3.exception.BmobException;
+import cn.bmob.v3.listener.SaveListener;
 
 public class RegisterActivity extends AppCompatActivity {
     private EditText e_set_username = null;
@@ -25,14 +24,15 @@ public class RegisterActivity extends AppCompatActivity {
     private EditText e_set_email = null;
     private Button e_set_finish = null;
     private ImageView e_back;
-    private Activity tag = RegisterActivity.this;
-    userManager userManager = new userManager();
+    private Context tag = RegisterActivity.this;
+    toast t = new toast();
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
+        Bmob.initialize(this,"0a45c49f2713b2838103e25fcf2474e6");
 
         e_set_username = (EditText) findViewById(R.id.user_set_name);
         e_set_password = (EditText) findViewById(R.id.user_set_password);
@@ -50,25 +50,38 @@ public class RegisterActivity extends AppCompatActivity {
         e_set_finish.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String username = e_set_username.getText().toString();
-                String password = e_set_password.getText().toString();
+                final String username = e_set_username.getText().toString();
+                final String password = e_set_password.getText().toString();
                 String email = e_set_email.getText().toString();
                 //boolean fl = userManager.findUserByName(username);
                 if (username.equals("")){
-                    Toast.makeText(tag,"请输入用户名",Toast.LENGTH_SHORT).show();
-                }else if(userManager.findUserByName(username)){
-                    Toast.makeText(tag,"该用户名已存在！",Toast.LENGTH_SHORT).show();
+                    t.toast_short(tag,"请输入用户名");
                 }else if (password.equals("")){
-                    Toast.makeText(tag,"请输入密码",Toast.LENGTH_SHORT).show();
-                }else if (password.length()<=4){
-                    Toast.makeText(tag,"密码不能小于四位",Toast.LENGTH_SHORT).show();
+                    t.toast_short(tag,"请输入密码");
                 }else if (email.equals("")){
-                    Toast.makeText(tag,"请输入邮箱",Toast.LENGTH_SHORT).show();
-                }else{
-                    userManager.insertUser(username,password,email);
-                    Toast.makeText(tag,"您已注册成功",Toast.LENGTH_SHORT).show();
-                   Intent intent = new Intent(tag,LoginActivity.class);
-                    startActivity(intent);
+                    t.toast_short(tag,"请输入邮箱");
+                }else if (password.length()<6){
+                    t.toast_short(tag,"密码不能少于6位数！");
+                }else {
+                    BmobUser user = new BmobUser();
+                    user.setUsername(username);
+                    user.setPassword(password);
+                    user.setEmail(email);
+                    user.signUp(new SaveListener<BmobUser>() {
+                        @Override
+                        public void done(BmobUser bmobUser, BmobException e) {
+                            if (e==null){
+                                t.toast_short(tag,"恭喜您，注册成功！");
+                                Intent intent = new Intent(tag,LoginActivity.class);
+                                intent.putExtra("user_name",username);
+                                intent.putExtra("password",password);
+                                startActivity(intent);
+                            }else {
+                                t.toast_long(tag,String.valueOf(e));
+
+                            }
+                        }
+                    });
                 }
 
             }
@@ -76,4 +89,5 @@ public class RegisterActivity extends AppCompatActivity {
 
 
     }
+
 }
