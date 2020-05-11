@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mobile_navigation"
+    app:startDestination="@+id/navigation_home">
+
+    <fragment
+        android:id="@+id/navigation_home"
+        android:name="com.baoaccount.ui.home.HomeFragment"
+        tools:layout="@layout/fragment_home" />
+
+    <fragment
+        android:id="@+id/navigation_account"
+        android:name="com.baoaccount.ui.Account.AccountFragment"
+        android:label="@string/account"
+        tools:layout="@layout/fragment_account" />
+
+    <fragment
+        android:id="@+id/navigation_notifications"
+        android:name="com.baoaccount.ui.calculator.CalculatorFragment"
+        android:label="@string/account"
+        tools:layout="@layout/fragment_calculator" />
+    <fragment
+        android:id="@+id/navigation_mine"
+        android:name="com.baoaccount.ui.mine.MineFragment"
+        android:label="@string/mine"
+        tools:layout="@layout/fragment_mine" >
+    </fragment>
+</navigation>

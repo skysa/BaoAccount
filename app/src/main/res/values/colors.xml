@@ -14,4 +14,9 @@
     <!--背景颜色-->
     <color name="backgroundOrangeLight">#ffe8ce</color>
     <color name="backgroundOrange">#f7b487</color>
+    <color name="mine_background_color">#fad5ab</color>
+    <color name="background_white">#fff</color>
+    
+    <!--下划线颜色-->
+    <color name="holo">#D1D0D0</color>
 </resources>
