@@ -34,7 +34,7 @@
         xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
         android:orientation="horizontal"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:layout_margin="15dp">
         <TextView
             android:id="@+id/account_out_type"
@@ -70,8 +70,8 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1">
-        <ListView
-            android:id="@+id/account_list"
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recycle_view"
             android:layout_width="match_parent"
             android:layout_height="match_parent"/>
     </LinearLayout>
