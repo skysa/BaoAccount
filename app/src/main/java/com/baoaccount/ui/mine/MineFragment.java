@@ -21,6 +21,7 @@ import com.baoaccount.MyFamily;
 import com.baoaccount.MySetting;
 import com.baoaccount.R;
 import com.baoaccount.app_main;
+import com.baoaccount.db.MyUser;
 import com.baoaccount.user_setting;
 import com.leon.lib.settingview.LSettingItem;
 
@@ -37,7 +38,8 @@ public class MineFragment extends Fragment {
         user_name = root.findViewById(R.id.m_name);
         family_name = root.findViewById(R.id.m_family);
         String name = (String) BmobUser.getObjectByKey("username");
-        String family = (String) BmobUser.getObjectByKey("family_name");
+        MyUser user = BmobUser.getCurrentUser(MyUser.class);
+        String family = user.getFamily_name().getFamily_name();
         user_name.setText(name);
         family_name.setText(family);
 

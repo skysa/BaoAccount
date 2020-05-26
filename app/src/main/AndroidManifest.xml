@@ -23,7 +23,9 @@
         <activity android:name=".user_setting" />
         <activity
             android:name=".app_main"
-            android:label="@string/title_activity_app_main" />
+            android:label="@string/title_activity_app_main">
+
+        </activity>
         <activity android:name=".MainActivity" />
         <activity android:name=".RegisterActivity" />
         <activity android:name=".LoginActivity">

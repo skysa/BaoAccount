@@ -13,6 +13,8 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.baoaccount.db.MyUser;
+
 import cn.bmob.v3.Bmob;
 import cn.bmob.v3.BmobUser;
 import cn.bmob.v3.exception.BmobException;
@@ -63,13 +65,13 @@ public class RegisterActivity extends AppCompatActivity {
                 }else if (password.length()<6){
                     t.toast_short(tag,"密码不能少于6位数！");
                 }else {
-                    BmobUser user = new BmobUser();
+                    MyUser user = new MyUser();
                     user.setUsername(username);
                     user.setPassword(password);
                     user.setEmail(email);
-                    user.signUp(new SaveListener<BmobUser>() {
+                    user.signUp(new SaveListener<MyUser>() {
                         @Override
-                        public void done(BmobUser bmobUser, BmobException e) {
+                        public void done(MyUser bmobUser, BmobException e) {
                             if (e==null){
                                 t.toast_short(tag,"恭喜您，注册成功！");
                                 Intent intent = new Intent(tag,LoginActivity.class);

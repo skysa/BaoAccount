@@ -19,4 +19,6 @@
     
     <!--下划线颜色-->
     <color name="holo">#D1D0D0</color>
+
+    <color name="unselect">#fcdbb6</color>
 </resources>

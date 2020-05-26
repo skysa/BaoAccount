@@ -12,6 +12,8 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.baoaccount.db.MyUser;
+
 import cn.bmob.v3.Bmob;
 import cn.bmob.v3.BmobUser;
 import cn.bmob.v3.exception.BmobException;
@@ -62,12 +64,12 @@ public class LoginActivity extends AppCompatActivity {
                 }else if (password.equals("")){
                     Toast.makeText(Tag,"请输入密码",Toast.LENGTH_SHORT).show();
                 }else {
-                    BmobUser user = new BmobUser();
+                    MyUser user = new MyUser();
                     user.setUsername(username);
                     user.setPassword(password);
-                    user.login(new SaveListener<BmobUser>() {
+                    user.login(new SaveListener<MyUser>() {
                         @Override
-                        public void done(BmobUser bmobUser, BmobException e) {
+                        public void done(MyUser bmobUser, BmobException e) {
                             if(e == null){
                                 t.toast_long(TAG,username+"欢迎回来!");
                                 Intent intent = new Intent(TAG,MainActivity.class);
