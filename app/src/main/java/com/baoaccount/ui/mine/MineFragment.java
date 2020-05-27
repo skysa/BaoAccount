@@ -2,6 +2,7 @@ package com.baoaccount.ui.mine;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -22,26 +23,46 @@ import com.baoaccount.MySetting;
 import com.baoaccount.R;
 import com.baoaccount.app_main;
 import com.baoaccount.db.MyUser;
+import com.baoaccount.db.family_name;
 import com.baoaccount.user_setting;
 import com.leon.lib.settingview.LSettingItem;
 
+import java.util.List;
+
+import cn.bmob.v3.BmobQuery;
 import cn.bmob.v3.BmobUser;
+import cn.bmob.v3.exception.BmobException;
+import cn.bmob.v3.listener.FindListener;
+import cn.bmob.v3.listener.QueryListener;
 
 public class MineFragment extends Fragment {
     private TextView user_name;
-    private TextView family_name;
+    private TextView f_name;
     private ImageView setting;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
         View root = inflater.inflate(R.layout.fragment_mine, container, false);
         user_name = root.findViewById(R.id.m_name);
-        family_name = root.findViewById(R.id.m_family);
-        String name = (String) BmobUser.getObjectByKey("username");
+        f_name = root.findViewById(R.id.m_family);
         MyUser user = BmobUser.getCurrentUser(MyUser.class);
-        String family = user.getFamily_name().getFamily_name();
+        String name = user.getUsername();
         user_name.setText(name);
-        family_name.setText(family);
+
+        BmobQuery<MyUser> myUserBmobQuery = new BmobQuery<>();
+        myUserBmobQuery.include("family_name");
+        myUserBmobQuery.addWhereEqualTo("username",name);
+        myUserBmobQuery.addQueryKeys("family_name");
+        myUserBmobQuery.findObjects(new FindListener<MyUser>() {
+            @Override
+            public void done(List<MyUser> list, BmobException e) {
+
+                Log.d("My",String.valueOf(list.size()));
+                String familyName = list.get(0).getFamily_name().getFamily_name();
+                f_name.setText(familyName);
+
+            }
+        });
 
         LinearLayout m_family = root.findViewById(R.id.set_family);
         LinearLayout m_chart = root.findViewById(R.id.set_chart);

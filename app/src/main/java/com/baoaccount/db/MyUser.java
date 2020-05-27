@@ -1,6 +1,5 @@
 package com.baoaccount.db;
 
-import cn.bmob.v3.BmobObject;
 import cn.bmob.v3.BmobUser;
 
 public class MyUser extends BmobUser {
