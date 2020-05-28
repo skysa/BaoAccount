@@ -6,6 +6,7 @@ public class family_name extends BmobObject {
     private Integer family_member;
     private String family_name;
 
+
     public String getFamily_name() {
         return family_name;
     }

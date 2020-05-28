@@ -3,30 +3,33 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:orientation="horizontal"
-    android:layout_height="match_parent"
-    android:layout_margin="15dp">
+    android:layout_height="wrap_content"
+    android:layout_marginLeft="15dp"
+    android:layout_marginRight="15dp"
+    android:layout_marginBottom="10dp">
     <TextView
         android:id="@+id/account_out_type"
+        android:textSize="15sp"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_weight="1"
-        android:layout_gravity="center"
-        android:textColor="@color/textColorWhite"/>
+        android:layout_weight="3"
+        android:gravity="center_horizontal"
+        android:textColor="@color/textColorHolo"/>
     <TextView
-        android:id="@+id/account_out_comment"
+        android:id="@+id/account_out_used"
+        android:textSize="15sp"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_weight="2"
-        android:layout_gravity="center"
-        android:gravity="right"
-        android:textColor="@color/textColorWhite"/>
+        android:gravity="center_horizontal"
+        android:textColor="@color/textColorHolo"/>
     <TextView
-        android:id="@+id/account_number"
+        android:id="@+id/account_out_number"
+        android:textSize="15sp"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_weight="1"
-        android:layout_gravity="center"
-        android:gravity="right"
-        android:textColor="@color/textColorWhite"/>
+        android:layout_weight="2"
+        android:gravity="center_horizontal"
+        android:textColor="@color/textColorHolo"/>
 
 </LinearLayout>

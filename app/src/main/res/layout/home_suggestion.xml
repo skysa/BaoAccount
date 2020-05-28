@@ -12,6 +12,14 @@
         android:layout_marginLeft="15dp"
         android:layout_marginTop="15dp"
         android:text="@string/suggestion"
-        android:textColor="@color/textColorWhite"
-        android:textSize="20sp"/>
+        android:textColor="@color/textColorBlack"
+        android:textSize="15sp"/>
+    <TextView
+        android:id="@+id/home_suggestion"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="15dp"
+        android:layout_margin="30dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"/>
 </LinearLayout>

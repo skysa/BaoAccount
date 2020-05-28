@@ -25,7 +25,7 @@
     <!--我的-->
     <string name="family">家庭：</string>
     <string name="m_family">我的家</string>
-    <string name="chart">图表</string>
+    <string name="budget">预算</string>
     <string name="account_type">账户</string>
     <string name="setting">个人设置</string>
     <string name="sign_out">注销</string>
@@ -39,9 +39,23 @@
     <!--查看账单-->
     <string name="person">个人</string>
     <string name="MyFamily">家庭</string>
+    <string name="user">用户</string>
 
     <string name="type_Flow">支出类型</string>
     <string name="commit">账户</string>
     <string name="Flow_money">金额</string>
     <string name="in_money">0.00</string>
+
+    <!--主页面-->
+    <string name="sum_in">今日总收入</string>
+    <string name="sum_out">今日总支出</string>
+
+    <!--设置-->
+    <string name="mima">设置密码</string>
+    <string name="xinxi">设置个人信息</string>
+    <string name="origin">当前登录密码：</string>
+    <string name="new_mima">修改新密码：</string>
+    <string name="queren_mima">确认新密码：</string>
+    <string name="set_username">输入新用户名：</string>
+    <string name="set_email">输入邮箱：</string>
 </resources>

@@ -9,6 +9,33 @@ public class Day_flow extends BmobObject {
     private Flow_type flow_type;
     private Accunt_type account_type;
     private MyUser user_name;
+    private Integer df_year;
+    private Integer df_month;
+    private Integer df_date;
+
+    public Integer getDf_date() {
+        return df_date;
+    }
+
+    public void setDf_date(Integer df_date) {
+        this.df_date = df_date;
+    }
+
+    public Integer getDf_month() {
+        return df_month;
+    }
+
+    public void setDf_month(Integer df_month) {
+        this.df_month = df_month;
+    }
+
+    public Integer getDf_year() {
+        return df_year;
+    }
+
+    public void setDf_year(Integer df_year) {
+        this.df_year = df_year;
+    }
 
     public MyUser getUser_name() {
         return user_name;

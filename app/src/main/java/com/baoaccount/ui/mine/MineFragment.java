@@ -48,21 +48,24 @@ public class MineFragment extends Fragment {
         MyUser user = BmobUser.getCurrentUser(MyUser.class);
         String name = user.getUsername();
         user_name.setText(name);
+       BmobQuery<MyUser> myUserBmobQuery = new BmobQuery<>();
+       myUserBmobQuery.include("family");
+       myUserBmobQuery.addWhereEqualTo("username",name);
 
-        BmobQuery<MyUser> myUserBmobQuery = new BmobQuery<>();
-        myUserBmobQuery.include("family_name");
-        myUserBmobQuery.addWhereEqualTo("username",name);
-        myUserBmobQuery.addQueryKeys("family_name");
-        myUserBmobQuery.findObjects(new FindListener<MyUser>() {
-            @Override
-            public void done(List<MyUser> list, BmobException e) {
-
-                Log.d("My",String.valueOf(list.size()));
-                String familyName = list.get(0).getFamily_name().getFamily_name();
-                f_name.setText(familyName);
-
-            }
-        });
+       myUserBmobQuery.findObjects(new FindListener<MyUser>() {
+           @Override
+           public void done(List<MyUser> list, BmobException e) {
+               if (e==null){
+                   String family_name = list.get(0).getFamily().getFamily_name();
+                   if (family_name==null){
+                       Log.d("My","nulljdie");
+                   }else {
+                       Log.d("My","jieow");
+                   }
+                   f_name.setText(family_name);
+               }
+           }
+       });
 
         LinearLayout m_family = root.findViewById(R.id.set_family);
         LinearLayout m_chart = root.findViewById(R.id.set_chart);

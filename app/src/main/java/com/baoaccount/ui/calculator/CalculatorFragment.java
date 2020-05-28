@@ -83,11 +83,21 @@ public class CalculatorFragment extends Fragment {
                         updateD_jieyu();  //更新当日结余表
                         updatep_remainder(); //更新个人余额表
                         MyUser user = BmobUser.getCurrentUser(MyUser.class);
-                        if (user.getFamily_name().getObjectId().toString().equals("")){
-                            Log.d("My","null");
-                        }else {
-                            updatef_remainder(user.getFamily_name());
-                        }
+                        BmobQuery<MyUser> userBmobQuery = new BmobQuery<>();
+                        userBmobQuery.include("family");
+                        userBmobQuery.addWhereEqualTo("username",user.getUsername());
+                        userBmobQuery.findObjects(new FindListener<MyUser>() {
+                            @Override
+                            public void done(List<MyUser> list, BmobException e) {
+                                if (e==null){
+                                    if (list.get(0).getFamily().getFamily_name().equals("")){  //如果用户加入了家庭则更新家庭余额
+
+                                    }else {
+                                        updatef_remainder(list.get(0).getFamily());
+                                    }
+                                }
+                            }
+                        });
                     }
 
                 }
@@ -195,11 +205,18 @@ public class CalculatorFragment extends Fragment {
     }
 
     public void setFlow(final View root){  //在数据库中添加流水记录
+        Calendar calendar = Calendar.getInstance();  //获取当前年月日
+        final int year = calendar.get(Calendar.YEAR);
+        final int month = calendar.get(Calendar.MONTH)+1;
+        final int day = calendar.get(Calendar.DATE);
        MyUser user = BmobUser.getCurrentUser(MyUser.class);   //获取当前登录用户
 
         final Day_flow day_flow = new Day_flow();
         day_flow.setUser_name(user);
         day_flow.setN_money(MyMoney);
+        day_flow.setDf_date(day);
+        day_flow.setDf_year(year);
+        day_flow.setDf_month(month);
         day_flow.save(new SaveListener<String>() {
             @Override
             public void done(String s, BmobException e) {
@@ -636,7 +653,7 @@ public class CalculatorFragment extends Fragment {
                         if (list.size()==0){
                             addfremainder(family,accunt_type);
                         }else {
-
+                            updatefRemainder(list);
                         }
                     }
                 });
@@ -662,6 +679,24 @@ public class CalculatorFragment extends Fragment {
             }
         });
 
+    }
+    public void updatefRemainder(List<f_remainder> list){  //更新数据库中已存在的家庭账户余额
+        f_remainder fRemainder = new f_remainder();
+        Double money = list.get(0).getF_money();
+        if (MyDirection.equals("支出")){
+            money = money - MyMoney;
+        }else {
+            money = money + MyMoney;
+        }
+        fRemainder.setF_money(money);
+        fRemainder.update(list.get(0).getObjectId(),new UpdateListener() {
+            @Override
+            public void done(BmobException e) {
+                if (e==null){
+                    Log.d("My","修改家庭余额成功");
+                }
+            }
+        });
     }
 
 }

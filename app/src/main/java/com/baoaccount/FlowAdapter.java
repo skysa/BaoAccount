@@ -11,6 +11,7 @@ import android.widget.BaseAdapter;
 import android.widget.FrameLayout;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -48,18 +49,21 @@ public class FlowAdapter extends RecyclerView.Adapter<FlowAdapter.ViewHolder> {
         private TextView type;
         private TextView account;
         private TextView money;
+        private TextView user;
 
-        public ViewHolder(View itemView){
+        public ViewHolder(final View itemView){
             super(itemView);
             type = (TextView)itemView.findViewById(R.id.account_type);
             account = (TextView)itemView.findViewById(R.id.account_used);
             money = (TextView) itemView.findViewById(R.id.account_money);
+            user = (TextView) itemView.findViewById(R.id.account_user);
 
             //设置点击事件
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
                     if (onItemClickListener!=null){
+                        Toast.makeText(itemView.getContext(),"you clike it",Toast.LENGTH_SHORT).show();
                         onItemClickListener.OnItemClick(v,mFlowList.get(getLayoutPosition()));
                     }
                 }
@@ -95,7 +99,7 @@ public class FlowAdapter extends RecyclerView.Adapter<FlowAdapter.ViewHolder> {
         holder.type.setText(flow.getFlow_type());
         holder.account.setText(flow.getFlow_account());
         holder.money.setText(flow.getFlow_money());
-
+        holder.user.setText(flow.getUser_name());
 
     }
 
