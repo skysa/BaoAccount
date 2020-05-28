@@ -58,4 +58,9 @@
     <string name="queren_mima">确认新密码：</string>
     <string name="set_username">输入新用户名：</string>
     <string name="set_email">输入邮箱：</string>
+    <string name="myhome">我的家</string>
+    <string name="createhome">当前还没有进入家庭哦</string>
+    <string name="createhome1">赶紧创建或加入家庭吧！</string>
+    <string name="family_name">家庭名：</string>
+    <string name="familymember">邀请成员(可不填）：</string>
 </resources>

@@ -16,16 +16,15 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".MySetting"></activity>
+        <activity android:name=".create_family"></activity>
+        <activity android:name=".MySetting" />
         <activity android:name=".MyAccount" />
         <activity android:name=".MyChart" />
         <activity android:name=".MyFamily" />
         <activity android:name=".user_setting" />
         <activity
             android:name=".app_main"
-            android:label="@string/title_activity_app_main">
-
-        </activity>
+            android:label="@string/title_activity_app_main"></activity>
         <activity android:name=".MainActivity" />
         <activity android:name=".RegisterActivity" />
         <activity android:name=".LoginActivity">

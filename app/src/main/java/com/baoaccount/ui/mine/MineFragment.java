@@ -22,6 +22,7 @@ import com.baoaccount.MyFamily;
 import com.baoaccount.MySetting;
 import com.baoaccount.R;
 import com.baoaccount.app_main;
+import com.baoaccount.create_family;
 import com.baoaccount.db.MyUser;
 import com.baoaccount.db.family_name;
 import com.baoaccount.user_setting;
@@ -76,7 +77,14 @@ public class MineFragment extends Fragment {
         m_family.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                ActivityStart(MyFamily.class);
+                MyUser user = BmobUser.getCurrentUser(MyUser.class);
+                if (user.getFamily()==null){
+                    Intent intent = new Intent(MineFragment.this.getActivity(), create_family.class);
+                    startActivity(intent);
+                }else {
+                    ActivityStart(MyFamily.class);
+                }
+
             }
         });
         m_chart.setOnClickListener(new View.OnClickListener() {
